@@ -7,7 +7,7 @@ def SendEmailNotification(String result) {
     
     // set variables
     def subject = "${env.JOB_NAME} - Build #${env.BUILD_NUMBER} ${result}"
-    def content = '${JELLY_SCRIPT,template="html"}'
+    def content = '${JELLY_SCRIPT,template="zip"}'
 
     // send email
     if(to != null && !to.isEmpty()) {
@@ -34,7 +34,7 @@ def SendEmailNotificationDependency(String result) {
     if(to != null && !to.isEmpty()) {
         env.ForEmailPlugin = env.WORKSPACE
         emailext mimeType: 'text/html',
-        body: '${FILE, path="/var/lib/jenkins/workspace/sonar-email/target/dependency-check-report.html"}',
+        body: '/${FILE, path="/var/lib/jenkins/workspace/sonar-email/target/dependency-check-report.html"}',
         subject: currentBuild.currentResult + " : " + env.JOB_NAME,
         to: to, attachLog: true
     }
