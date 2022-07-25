@@ -114,6 +114,11 @@
               <groupId>org.owasp</groupId>
               <artifactId>dependency-check-maven</artifactId>
               <version>7.1.1</version>
+	      <configuration>
+                            <retireJsUrl>
+                                https://raw.githubusercontent.com/RetireJS/retire.js/33b4076ce87f3898b81af4fc1770a7b65aa54bcb/repository/jsrepository.json
+                            </retireJsUrl>
+               </configuration>
               <!-- 
               <configuration>
                   <failBuildOnCVSS>8</failBuildOnCVSS>
