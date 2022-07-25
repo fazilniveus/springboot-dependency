@@ -34,7 +34,7 @@ def SendEmailNotificationDependency(String result) {
     if(to != null && !to.isEmpty()) {
         env.ForEmailPlugin = env.WORKSPACE
         emailext mimeType: 'text/html',
-        body: '${FILE, path="${env.WORKSPACE}/target/dependency-check-report.html"}',
+        body: '${FILE, path='${env.WORKSPACE}/target/dependency-check-report.html'}',
         subject: currentBuild.currentResult + " : " + env.JOB_NAME,
         to: to, attachLog: true
     }
