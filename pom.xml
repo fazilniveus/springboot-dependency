@@ -18,7 +18,7 @@
 		<java.version>1.8</java.version>
 		<checkstyle.version>2.17</checkstyle.version>
 		
-		<sonar.host.url>http://34.93.93.34:9000</sonar.host.url>
+		<sonar.host.url>http://34.100.165.194:9000/</sonar.host.url>
 		<sonar.projectKey>springcicddemo</sonar.projectKey>
 		<sonar.login>admin</sonar.login>
 		<sonar.password>admin</sonar.password>
