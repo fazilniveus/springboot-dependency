@@ -106,6 +106,28 @@ pipeline{
     			}
         	}
       }
+      stage('Build Docker Image') {
+		    steps {
+			    sh 'whoami'
+			    sh 'sudo chmod 666 /var/run/docker.sock'
+			    script {
+				    myimage = docker.build("fazilniveus/devops:${env.BUILD_ID}")
+			    }
+		    }
+	    }
+	    
+	    stage("Push Docker Image") {
+		    steps {
+			    script {
+				    echo "Push Docker Image"
+				    withCredentials([string(credentialsId: 'dockerhub', variable: 'dockerhub')]) {
+            				sh "docker login -u fazilniveus -p ${dockerhub}"
+				    }
+				        myimage.push("${env.BUILD_ID}")
+				    
+			    }
+		    }
+	    }
       
         
     }
