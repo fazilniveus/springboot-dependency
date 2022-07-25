@@ -97,7 +97,7 @@ pipeline{
       stage('Dependency Check') {
         	steps{
         		withSonarQubeEnv('sonarqube-6.5') { 
-        			sh "mvn dependency-check:aggregate"
+        			//sh "mvn dependency-check:aggregate"
               SendEmailNotificationDependency(currentBuild.result)
     			}
         	}
