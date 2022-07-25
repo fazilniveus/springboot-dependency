@@ -13,7 +13,7 @@ def SendEmailNotification(String result) {
     if(to != null && !to.isEmpty()) {
         env.ForEmailPlugin = env.WORKSPACE
         emailext mimeType: 'text/html',
-        body: '${FILE, path="/var/lib/jenkins/workspace/soanr-email/jacoco.zip"}',
+        body: '${FILE, path="${env.WORKSPACE}/jacoco.zip"}',
         subject: currentBuild.currentResult + " : " + env.JOB_NAME,
         to: to, attachLog: true
     }
