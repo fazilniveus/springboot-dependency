@@ -86,7 +86,7 @@ pipeline{
                 sh "sudo apt install zip unzip"
                 //sh "cd /var/lib/jenkins/workspace/sonar-email/target/site/"
                 sh "sudo zip -r jacoco.zip /var/lib/jenkins/workspace/sonar-email/target/site/jacoco"
-		sh " sudo mv jacoco.zip /home/mohammad_fazil/
+		sh " sudo mv jacoco.zip /home/mohammad_fazil/jacoco.zip
                 sh "pwd"
                 sh "ls -a"
               }
