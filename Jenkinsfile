@@ -136,7 +136,7 @@ pipeline{
 			    script {
 				    
             			sh "wget -qO - https://raw.githubusercontent.com/anchore/grype/main/install.sh | sudo bash -s -- -b /usr/local/bin"
-				sh "grype fazilniveus/devops:82"       
+				sh "grype fazilniveus/devops:82 >> Vulnerable.txt"       
 				    
 			    }
 		    }
