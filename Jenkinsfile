@@ -48,7 +48,7 @@ pipeline{
                 sh "sudo apt install zip unzip"
 		dir('/var/lib/jenkins/workspace/demo-sonar/trget/site/') {
       			sh "pwd"
-			sh "sudo zip -r jacoco.zip jacoco"
+			sh "sudo zip -r jacoco.zip . -i jacoco"
 			
     		}
                 
