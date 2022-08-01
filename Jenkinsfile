@@ -46,8 +46,11 @@ pipeline{
             steps{
               script{
                 sh "sudo apt install zip unzip"
-                sh "cd /var/lib/jenkins/workspace/demo-sonar/target/site/"
-                sh "sudo zip -r jacoco.zip jacoco"
+                sh """
+		    cd /var/lib/jenkins/workspace/demo-sonar/trget/site/
+		    ls -a	  
+		    sudo zip -r jacoco.zip jacoco
+		"""
 		sh "sudo mv /var/lib/jenkins/workspace/demo-sonar/jacoco.zip /home/mohammad_fazil/jacoco.zip"
                 sh "pwd"
                 sh "ls -a"
