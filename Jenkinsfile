@@ -84,7 +84,7 @@ pipeline{
       stage('Build Docker Image') {
 		    steps {
 			    sh 'whoami'
-			    //sh 'sudo chmod 666 /var/run/docker.sock'
+			    sh 'sudo chmod 666 /var/run/docker.sock'
 			    script {
 				    myimage = docker.build("fazilniveus/devops:${env.BUILD_ID}")
 			    }
