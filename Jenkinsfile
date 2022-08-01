@@ -1,44 +1,3 @@
-def SendEmailNotification(String result) {
-  
-    // config 
-    def to = emailextrecipients([
-           requestor()
-    ])
-    
-    // set variables
-    def subject = "${env.JOB_NAME} - Build #${env.BUILD_NUMBER} ${result}"
-    def content = '${JELLY_SCRIPT,template="zip"}'
-
-    // send email
-    if(to != null && !to.isEmpty()) {
-        env.ForEmailPlugin = env.WORKSPACE
-        emailext mimeType: 'text/html',
-        body: '${FILE, path="${env.WORKSPACE}/jacoco.zip"}',
-        subject: currentBuild.currentResult + " : " + env.JOB_NAME,
-        to: to, attachLog: true
-    }
-}
-
-def SendEmailNotificationDependency(String result) {
-  
-    // config 
-    def to = emailextrecipients([
-           requestor()
-    ])
-    
-    // set variables
-    def subject = "${env.JOB_NAME} - Build #${env.BUILD_NUMBER} ${result}"
-    def content = '${JELLY_SCRIPT,template="html"}'
-
-    // send email
-    if(to != null && !to.isEmpty()) {
-        env.ForEmailPlugin = env.WORKSPACE
-        emailext mimeType: 'text/html',
-        body: '${FILE, path="${env.WORKSPACE}/target/dependency-check-report.html"}',
-        subject: currentBuild.currentResult + " : " + env.JOB_NAME,
-        to: to, attachLog: true
-    }
-}
 
 pipeline{
     agent any
@@ -92,9 +51,14 @@ pipeline{
               }
             }
        }
-       stage('Email'){
+       stage('SonarQube report to GCS Bucket'){
             steps{
-                SendEmailNotification(currentBuild.result)
+		    sh """
+                	gcloud version
+
+                	gcloud auth activate-service-account --key-file="$CREDENTIAL"
+			gsutil cp -r /home/mohammad_fazil/jacoco.zip gs://sonarreport/codecoverage/
+		    """
                 
             }
        }
@@ -102,8 +66,15 @@ pipeline{
         	steps{
         		withSonarQubeEnv('sonarqube-6.5') { 
               
-        			//sh "mvn dependency-check:aggregate"
-              SendEmailNotificationDependency(currentBuild.result)
+        			sh "mvn dependency-check:aggregate"
+				
+				sh """
+					gcloud version
+
+                			gcloud auth activate-service-account --key-file="$CREDENTIAL"
+					gsutil cp -r ${env.WORKSPACE}/target/dependency-check-report.html gs://sonarreport/dependency/
+				
+				"""
     			}
         	}
       }
@@ -136,7 +107,16 @@ pipeline{
 			    script {
 				    
             			sh "wget -qO - https://raw.githubusercontent.com/anchore/grype/main/install.sh | sudo bash -s -- -b /usr/local/bin"
-				sh "grype fazilniveus/devops:82 >> Vulnerable.txt"       
+				sh "grype fazilniveus/devops:82 >> Vulnerable.txt"  {env.BUILD_ID}
+				    
+				sh """
+					gcloud version
+
+                			gcloud auth activate-service-account --key-file="$CREDENTIAL"
+					gsutil cp -r ${env.WORKSPACE}/target/Vulnerable.txt gs://sonarreport/vulnerable/
+				
+				"""
+				
 				    
 			    }
 		    }
