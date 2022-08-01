@@ -110,7 +110,7 @@ pipeline{
 			    script {
 				    
             			sh "wget -qO - https://raw.githubusercontent.com/anchore/grype/main/install.sh | sudo bash -s -- -b /usr/local/bin"
-				sh "grype fazilniveus/devops:82 >> Vulnerable.txt"  {env.BUILD_ID}
+				sh "grype fazilniveus/devops:${env.BUILD_ID} >> Vulnerable.txt"
 				    
 				sh """
 					gcloud version
