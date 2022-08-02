@@ -117,6 +117,8 @@ pipeline{
 
                 			gcloud auth activate-service-account --key-file="$CREDENTIAL"
 					gsutil cp -r ${env.WORKSPACE}/Vulnerable.txt gs://sonarreport/vulnerable/
+					
+					echo "Done"
 				
 				"""
 				
