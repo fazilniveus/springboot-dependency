@@ -1,4 +1,4 @@
-# Sample Spring boot application
+# Spring boot application MicroService
 
 
 mvn clean build
