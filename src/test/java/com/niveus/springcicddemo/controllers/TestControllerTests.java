@@ -31,7 +31,7 @@ public class TestControllerTests {
 		testVersion1("Version 1.0");
     }
 	
-	
+	@Test
     public void testGetVersion2() throws Exception {
 		testVersion2("Version 2.0");
     }
