@@ -1,6 +1,6 @@
 steps:
   #static code analysis by sonarqube
-  - name: "gcr.io/cloud-builders/docker"
+  - name: 'maven:3.6.8-jdk-8'
     entrypoint: 'bash'
     args:
      - -c
