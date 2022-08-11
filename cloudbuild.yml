@@ -9,6 +9,6 @@ steps:
     - '-Dsonar.login=admin'
     - '-Dsonar.password=admin'
     - '-Dsonar.projectKey=sonar-jenkins'
-    - '-Dsonar.java.binaries=.'
+    - '-Dsonar.java.binaries=target'
     - '-Dsonar.sources=.'
 tags: ['cloud-builders-community']
