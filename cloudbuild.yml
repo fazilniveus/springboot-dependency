@@ -3,6 +3,7 @@ steps:
     args: ['install']
   - name: 'gcr.io/$PROJECT_ID/sonar-scanner:latest'
     args:
+    - 'mvn clean install sonar:sonar'
     - '-Dsonar.host.url=http://34.93.141.200:9000'
     - '-Dsonar.login=e0a95d4b25ed8ad54f8906bc5e0f6e486b7fbeb2'
     - '-Dsonar.login=admin'
