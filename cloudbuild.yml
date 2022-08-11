@@ -6,6 +6,7 @@ steps:
     - '-Dsonar.host.url=http://34.93.141.200:9000'
     - '-Dsonar.login=e0a95d4b25ed8ad54f8906bc5e0f6e486b7fbeb2'
     - '-Dsonar.login=admin'
+    - '-Dsonar.password=admin'
     - '-Dsonar.projectKey=sonar-jenkins'
     - '-Dsonar.sources=.'
 tags: ['cloud-builders-community']
