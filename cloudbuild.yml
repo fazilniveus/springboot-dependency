@@ -7,6 +7,6 @@ steps:
       "-Dsonar.sources=./src", 
       "-Dsonar.host.url=http://34.93.141.200:9000", 
       "-Dsonar.login=${_SONAR_TOKEN}"
-      "-Dsonar.java.binaries=.build\libs\ ]
+      "-Dsonar.java.binaries=.build/libs/ ]
 substitutions:
   _SONAR_TOKEN: "6d6599c9efa9a9e013bd29c1ea98bfaa27b08f5a"
