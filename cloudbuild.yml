@@ -8,4 +8,4 @@ steps:
       "-Dsonar.host.url=http://34.93.141.200:9000", 
       "-Dsonar.login=${_SONAR_TOKEN}" ]
 substitutions:
-  _SONAR_TOKEN: "e0a95d4b25ed8ad54f8906bc5e0f6e486b7fbeb2"
+  _SONAR_TOKEN: "6d6599c9efa9a9e013bd29c1ea98bfaa27b08f5a"
