@@ -8,7 +8,7 @@ steps:
     ‘SONAR_LOGIN=admin’
     args:
       ‘mvn clean verify sonar:sonar’
-      ‘-Dsonar.projectKey=’
+      ‘-Dsonar.projectKey=sonar-jenkins’
       ‘-Dsonar.sources=.’
       ‘-Dsonar.qualitygate.wait=true allow_failure: true’
       id: sonarqube
