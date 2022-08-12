@@ -11,5 +11,5 @@ steps:
     ‘-Dsonar.projectKey=sonar-jenkins’
     ‘-Dsonar.sources=.’
     ‘-Dsonar.qualitygate.wait=true allow_failure:true’
-    id: sonarqube
-    entrypoint: sh
+   id: sonarqube
+   entrypoint: sh
