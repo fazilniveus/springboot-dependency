@@ -1,3 +1,12 @@
 steps:
   - name: 'gcr.io/cloud-builders/mvn'
     args: ['install']
+  - name: "gcr.io/$PROJECT_ID/sonar-scanner:latest" 
+    waitFor: ["-"] 
+    args: [ 
+      "-Dsonar.projectKey=sonar-jenkins", 
+      "-Dsonar.sources=./src", 
+      "-Dsonar.host.url=http://34.93.141.200:9000", 
+      "-Dsonar.login=${_SONAR_TOKEN}" ]
+substitutions:
+  _SONAR_TOKEN: "e0a95d4b25ed8ad54f8906bc5e0f6e486b7fbeb2"
