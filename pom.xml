@@ -29,7 +29,7 @@
     	<sonar.jacoco.reportPath>${project.basedir}/../target/jacoco.exec</sonar.jacoco.reportPath>
     	<sonar.language>java</sonar.language>
 		
-	<!-- Extra --!>
+	<!-- Extra -->
 	 <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
    	 <sonar.language>java</sonar.language>
 	<sonar.jacoco.reportMissing.force.zero>true</sonar.jacoco.reportMissing.force.zero>	
