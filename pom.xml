@@ -83,7 +83,25 @@
 				</exclusion>
 			</exclusions>
         </dependency>
+		
+	<!-- Extra -->
+   <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <!-- Minimal supported version is 4.7 -->
+      <version>4.11</version>
+      <scope>test</scope>
+    </dependency>
         
+	<dependency>
+          <groupId>org.codehaus.sonar-plugins.java</groupId>
+          <artifactId>sonar-jacoco-listeners</artifactId>
+          <version>3.2</version>
+          <scope>test</scope>
+        </dependency>
+		
+		
+		
 	</dependencies>
 
 	<build>
@@ -146,15 +164,6 @@
 	
 	
   
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <!-- Minimal supported version is 4.7 -->
-      <version>4.11</version>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
   
   <!-- BEGIN: Specific to mapping unit tests and covered code -->
   <profiles>
@@ -179,14 +188,6 @@
         </plugins>
       </build>
 
-      <dependencies>
-        <dependency>
-          <groupId>org.codehaus.sonar-plugins.java</groupId>
-          <artifactId>sonar-jacoco-listeners</artifactId>
-          <version>3.2</version>
-          <scope>test</scope>
-        </dependency>
-      </dependencies>
     </profile>
   </profiles>
 
